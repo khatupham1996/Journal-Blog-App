@@ -1,0 +1,4 @@
+# created by virtualenv automatically
+env/
+*.sqlite3
+node_modules/
