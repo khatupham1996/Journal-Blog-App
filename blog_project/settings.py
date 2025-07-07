@@ -1,19 +1,9 @@
 from pathlib import Path
-import os
-from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(BASE_DIR / ".env")
-
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
-if not SECRET_KEY:
-    raise ValueError(
-        "Missing DJANGO_SECRET_KEY environment variable. "
-        "Create a .env file at project root with DJANGO_SECRET_KEY=<your key>."
-    )
-
-DEBUG = os.environ.get("DJANGO_DEBUG", "False").lower() in ("true", "1", "yes")
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",")
+SECRET_KEY = "change-me"
+DEBUG = True
+ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -24,12 +14,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "crispy_forms",
     "crispy_tailwind",
-    "django_htmx",
     "blog",
+    "django_htmx",
 ]
-
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 CRISPY_TEMPLATE_PACK = "tailwind"
+
+
 AUTH_USER_MODEL = "blog.User"
 
 MIDDLEWARE = [
